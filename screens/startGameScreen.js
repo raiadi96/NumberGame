@@ -1,6 +1,8 @@
 import  { View, TextInput, StyleSheet, Alert } from 'react-native';
 import PrimaryButton from '../components/primaryButton';
 import {useState} from 'react';
+import NumberContainer from '../components/numberContainer';
+import Card from '../components/card';
 
 function StartGameScreen(props){
 
@@ -26,8 +28,12 @@ function StartGameScreen(props){
     }
 
     const [enteredNumber, setEnteredNumber] = useState('');
-return (<View style = {styles.inputContainer}>
-    <TextInput style ={styles.numberInput} 
+return (<View>
+<View>
+<NumberContainer style = {styles.titleContainer} children='Enter a Number '/>
+</View>
+<Card>
+<TextInput style ={styles.numberInput} 
     maxLength={2} 
     keyboardType='number-pad' 
     autoCapitalize='none'
@@ -43,20 +49,16 @@ return (<View style = {styles.inputContainer}>
     <PrimaryButton onPress = {resetInputHandler}>Reset</PrimaryButton>
     </View>
     </View>
+</Card>
 </View>);
 }
 
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-    inputContainer:{
+    titleContainer:{
         alignItems:'center',
-        padding:16,
-        marginTop:100,
-        marginHorizontal:16,
-        borderRadius:8,
-        backgroundColor:'#4e0329',
-        elevation:4
+        color:'#ddb52f',
     },
     numberInput:{
         height:50,
