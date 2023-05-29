@@ -11,6 +11,10 @@ let minBoundary = 1;
 let maxBoundary = 100;
 function GameScreen({userNumber, onGameOver}){
 
+    const initialGuess = generateRandomNumber(1, 100, userNumber);
+    const [currentGuess, setCurrentGuess] = useState(initialGuess);
+    const [guessLog, setGuessLog] = useState([initialGuess]);
+    
     function generateRandomNumber(min, max, exclude){
         const randNm = Math.floor(Math.random() * (max-min)) + min;
         if(randNm === exclude){
@@ -54,9 +58,6 @@ useEffect(()=>{
         setGuessLog((currentGuesses)=>[newRandomNumber, ...currentGuesses]);
         return;
     }
-    const initialGuess = generateRandomNumber(1, 100, userNumber);
-    const [currentGuess, setCurrentGuess] = useState(initialGuess);
-    const [guessLog, setGuessLog] = useState([initialGuess]);
     return (
         <View style={styles.container}>
             <Title>Opponent's Guess</Title>
